@@ -88,38 +88,56 @@ export class Game {
     }
 
 
-    jump(height, squash) {
+    jump(height,squash) {
         const startY = this.spriteBall.y;
         const baseSize = this.spriteBall.baseSize;
+
         return gsap.timeline()
             .to(this.spriteBall, {
-                duration: 0.5,
+                duration: 0.8,
                 y: startY - height,
-                ease: "power2.out",
+                ease: "power1.out",
             })
+            // растягиваем
             .to(this.spriteBall.scale, {
-                duration: 0.1,
-                x: baseSize * (1 - 0.3 * squash),
-                y: baseSize * (1 + 0.2 * squash),
+                duration: 0.12,
+                x: baseSize * (1 - 0.4 * squash),
+                y: baseSize * (1 + 0.3 * squash),
+                ease: "power1.out",
             }, "<")
+            // начальное
             .to(this.spriteBall.scale, {
-                duration: 0.2,
+                duration: 0.4,
                 x: baseSize,
                 y: baseSize,
-            },"-=0.3")
+                ease: "none",
+            }, ">")
+
             .to(this.spriteBall, {
-                duration: 0.5,
+                duration: 0.8,
                 y: startY,
+                ease: "power1.in",
             })
-            .to(this.spriteBall.scale, {
-                duration: 0.1,
-                x: baseSize * (1 - 0.3 * squash),
-                y: baseSize * (1 + 0.2 * squash),
-            }, "")
+            // растягиваем
             .to(this.spriteBall.scale, {
                 duration: 0.15,
-                x: baseSize * (1 + 0.3 * squash),
-                y: baseSize * (1 - 0.2 * squash),
-            }, "-=0.05");
+                x: baseSize * (1 - 0.2 * squash),
+                y: baseSize * (1 + 0.2 * squash),
+                ease: "sine.out"
+            }, "<+0.3")
+            //сжимаем
+            .to(this.spriteBall.scale, {
+                duration: 0.1,
+                x: baseSize * (1 + 0.4 * squash),
+                y: baseSize * (1 - 0.3 * squash),
+                ease: "power1.out",
+            })
+            // начальное
+            .to(this.spriteBall.scale, {
+                duration: 0.1,
+                x: baseSize,
+                y: baseSize,
+                ease: "back.out(2)"
+            })
     }
 }
