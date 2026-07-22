@@ -102,15 +102,24 @@ export class Game {
                 x: baseSize * (1 - 0.3 * squash),
                 y: baseSize * (1 + 0.2 * squash),
             }, "<")
+            .to(this.spriteBall.scale, {
+                duration: 0.2,
+                x: baseSize,
+                y: baseSize,
+            },"-=0.3")
             .to(this.spriteBall, {
                 duration: 0.5,
                 y: startY,
             })
+            .to(this.spriteBall.scale, {
+                duration: 0.1,
+                x: baseSize * (1 - 0.3 * squash),
+                y: baseSize * (1 + 0.2 * squash),
+            }, "")
             .to(this.spriteBall.scale, {
                 duration: 0.15,
                 x: baseSize * (1 + 0.3 * squash),
                 y: baseSize * (1 - 0.2 * squash),
             }, "-=0.05");
     }
-
 }
