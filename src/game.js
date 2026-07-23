@@ -65,7 +65,6 @@ export class Game {
             gsap.timeline()
                 .add(this.jump(Game.GAME_HEIGHT / 2, 1, 1.6))
                 .add(this.jump(Game.GAME_HEIGHT / 4, 0.7, 1))
-                .add(this.jump(Game.GAME_HEIGHT / 4, 0.7, 1))
                 .add(this.jump(Game.GAME_HEIGHT / 8, 0.5, 0.8))
                 .to(this.spriteBall.scale, {
                     x: baseSize,
