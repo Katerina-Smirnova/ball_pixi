@@ -54,7 +54,7 @@ export class Game {
         this.spriteBall.baseSize = baseSize;
         this.spriteBall.scale.set(baseSize);
         this.spriteBall.x = Game.GAME_WIDTH / 2;
-        this.spriteBall.y = this.land.y - this.spriteBall.height / 2;
+        this.spriteBall.y = this.land.y - this.spriteBall.height / 2.5;
         this.spriteBall.eventMode = 'static'
         this.world.addChild(this.spriteBall);
 
@@ -64,8 +64,8 @@ export class Game {
 
             gsap.timeline()
                 .add(this.jump(Game.GAME_HEIGHT / 2, 1, 1.6))
-                .add(this.jump(Game.GAME_HEIGHT / 4, 0.7, 1),"-=0.04")
-                .add(this.jump(Game.GAME_HEIGHT / 8, 0.5, 0.8),"-=0.04")
+                .add(this.jump(Game.GAME_HEIGHT / 4, 0.7, 1),"-=0.08")
+                .add(this.jump(Game.GAME_HEIGHT / 8, 0.5, 0.8),"-=0.08")
                 .to(this.spriteBall.scale, {
                     x: baseSize,
                     y: baseSize,
