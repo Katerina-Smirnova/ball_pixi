@@ -128,7 +128,7 @@ export class Game {
             }, `<+=${time/ 6}`)
             //сжимаем
             .to(this.spriteBall.scale, {
-                duration: 0.2,
+                duration: 0.15,
                 x: baseSize * (1 + 0.2 * squash),
                 y: baseSize * (1 - 0.1 * squash),
                 ease: "power2.out"
