@@ -48,13 +48,15 @@ export class Game {
 
         const texture = await Assets.load('/ball.png');
         this.spriteBall = new Sprite(texture)
-        this.spriteBall.anchor.set(0.5);
+        this.spriteBall.anchor.set(0.5, 0.5);
+        this.spriteBall.pivot.set(0, this.spriteBall.height);
 
         const baseSize = 100 / texture.width;
         this.spriteBall.baseSize = baseSize;
         this.spriteBall.scale.set(baseSize);
         this.spriteBall.x = Game.GAME_WIDTH / 2;
-        this.spriteBall.y = this.land.y - this.spriteBall.height / 2.5;
+        this.spriteBall.y = this.land.y + Math.floor(this.spriteBall.height / 1.7);
+        console.log(this.spriteBall.y)
         this.spriteBall.eventMode = 'static'
         this.world.addChild(this.spriteBall);
 
