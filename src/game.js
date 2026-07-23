@@ -61,10 +61,12 @@ export class Game {
         this.spriteBall.on('click', () => {
             if (this.isJumping) return;
             this.isJumping = true;
+
             gsap.timeline()
-                .add(this.jump(Game.GAME_HEIGHT / 2, 1))
-                .add(this.jump(Game.GAME_HEIGHT / 4, 0.7))
-                .add(this.jump(Game.GAME_HEIGHT / 8, 0.5))
+                .add(this.jump(Game.GAME_HEIGHT / 2, 1, 1.6))
+                .add(this.jump(Game.GAME_HEIGHT / 4, 0.7, 1))
+                .add(this.jump(Game.GAME_HEIGHT / 4, 0.7, 1))
+                .add(this.jump(Game.GAME_HEIGHT / 8, 0.5, 0.8))
                 .to(this.spriteBall.scale, {
                     x: baseSize,
                     y: baseSize,
@@ -88,49 +90,50 @@ export class Game {
     }
 
 
-    jump(height,squash) {
+    jump(height, squash, time) {
         const startY = this.spriteBall.y;
         const baseSize = this.spriteBall.baseSize;
 
         return gsap.timeline()
             .to(this.spriteBall, {
-                duration: 0.8,
+                duration: time / 2,
                 y: startY - height,
                 ease: "power1.out",
             })
             // растягиваем
             .to(this.spriteBall.scale, {
-                duration: 0.12,
-                x: baseSize * (1 - 0.4 * squash),
-                y: baseSize * (1 + 0.3 * squash),
-                ease: "power1.out",
-            }, "<")
+                duration: time / 4 + 0.1,
+                x: baseSize * (1 - 0.2 * squash),
+                y: baseSize * (1 + 0.1 * squash),
+                ease: "sine.inOut"
+            }, "<+=0.1")
             // начальное
             .to(this.spriteBall.scale, {
-                duration: 0.4,
+                duration: time / 4,
                 x: baseSize,
                 y: baseSize,
                 ease: "none",
             }, ">")
 
             .to(this.spriteBall, {
-                duration: 0.8,
+                duration: time / 2,
                 y: startY,
                 ease: "power1.in",
             })
             // растягиваем
             .to(this.spriteBall.scale, {
-                duration: 0.15,
+                duration: time / 4,
                 x: baseSize * (1 - 0.2 * squash),
                 y: baseSize * (1 + 0.1 * squash),
                 ease: 'power1.inOut',
             }, "<+0.25")
             //сжимаем
             .to(this.spriteBall.scale, {
-                duration: 0.15,
+                duration: 0.08,
                 x: baseSize * (1 + 0.3 * squash),
                 y: baseSize * (1 - 0.2 * squash),
-                ease: "power1.out",
+                ease: "power2.out",
             })
+
     }
 }
