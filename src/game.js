@@ -122,22 +122,15 @@ export class Game {
             .to(this.spriteBall.scale, {
                 duration: 0.15,
                 x: baseSize * (1 - 0.2 * squash),
-                y: baseSize * (1 + 0.2 * squash),
-                ease: "sine.out"
-            }, "<+0.3")
+                y: baseSize * (1 + 0.1 * squash),
+                ease: 'power1.inOut',
+            }, "<+0.25")
             //сжимаем
             .to(this.spriteBall.scale, {
-                duration: 0.1,
-                x: baseSize * (1 + 0.4 * squash),
-                y: baseSize * (1 - 0.3 * squash),
+                duration: 0.15,
+                x: baseSize * (1 + 0.3 * squash),
+                y: baseSize * (1 - 0.2 * squash),
                 ease: "power1.out",
-            })
-            // начальное
-            .to(this.spriteBall.scale, {
-                duration: 0.1,
-                x: baseSize,
-                y: baseSize,
-                ease: "back.out(2)"
             })
     }
 }
