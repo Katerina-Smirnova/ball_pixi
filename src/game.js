@@ -61,7 +61,6 @@ export class Game {
         this.spriteBall.on('click', () => {
             if (this.isJumping) return;
             this.isJumping = true;
-
             gsap.timeline()
                 .add(this.jump(Game.GAME_HEIGHT / 2, 1, 1.6))
                 .add(this.jump(Game.GAME_HEIGHT / 4, 0.7, 1))
